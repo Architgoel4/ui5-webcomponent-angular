@@ -10,16 +10,20 @@ export class UserInputComponent implements OnInit {
   @ViewChild('dateInput') date: ElementRef;
 
   @Output() addTodo = new EventEmitter();
-
+  inpval = '';
   constructor() { }
   ngOnInit() {
   }
 
   handleAddTodo() {
     this.addTodo.emit({
-      text: this.text.nativeElement.value,
+      text: this.inpval,
       date: this.date.nativeElement.value
     });
+  }
+  handleSearch($event) {
+    console.log(this.inpval);
+    console.log($event);
   }
 
 }

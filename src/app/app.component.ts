@@ -9,13 +9,14 @@ import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 export class AppComponent {
   @Input() selectionChange;
 
-  @ViewChild('dialog') oDialog: ElementRef;
-  @ViewChild('dialogInput') oDialogInput: ElementRef;
-  @ViewChild('dialogDatePicker') oDialogDatePicker: ElementRef;
+  @ViewChild('dialog', { static: true }) oDialog: ElementRef;
+  @ViewChild('dialogInput', { static: true }) oDialogInput: ElementRef;
+  @ViewChild('dialogDatePicker', { static: true }) oDialogDatePicker: ElementRef;
   dialogText: string;
   dialogDate: string;
 
   title = 'app';
+  headerText = 'Bindable header title';
   todos: Array<Todo> = [
     {
       text: 'Get some carrots',
@@ -55,6 +56,10 @@ export class AppComponent {
 
   constructor() {
     this.syncTodos();
+  }
+
+  handleRowClick($event) {
+    console.log($event);
   }
 
   handleAddTodo($event) {

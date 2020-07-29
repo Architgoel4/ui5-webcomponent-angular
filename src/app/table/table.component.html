@@ -1,0 +1,19 @@
+<ui5-table id="todo-table" (rowClick)="handleRowClick($event)">
+  <ui5-table-column demandPopin="true" slot="columns" style="width: 12rem" *ngFor="let cols of columns">
+    <span style="line-height: 1.4rem">{{cols.text}}</span>
+  </ui5-table-column>
+  <ui5-table-row *ngFor="let todo of todos" slot="default">
+    <ui5-table-cell>
+      <app-user-input></app-user-input>
+    </ui5-table-cell>
+    <ui5-table-cell>
+      <span style="line-height: 1.4rem">{{todo.text}}</span>
+    </ui5-table-cell>
+    <ui5-table-cell>
+      <span style="line-height: 1.4rem">{{todo.deadline}}</span>
+    </ui5-table-cell>
+    <ui5-table-cell>
+      <span style="line-height: 1.4rem">{{todo.done}}</span>
+    </ui5-table-cell>
+  </ui5-table-row>
+</ui5-table>

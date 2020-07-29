@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header [title]="headerText"></app-header>
 <section class="app-content">
   <app-user-input (addTodo)="handleAddTodo($event)"></app-user-input>
   <app-list [todos]="unDone"
@@ -6,12 +6,13 @@
     (deletedItem)="removeItem($event)"
     (changeSelection)="handleUndone($event)"></app-list>
 
+
   <ui5-panel [collapsed]="!this.done.length" header-text="Completed tasks">
     <app-list [todos]="done" (editPressed)="editItem($event)"
       (deletedItem)="removeItem($event)"
       (changeSelection)="handleDone($event)"></app-list>
   </ui5-panel>
-
+  <app-table [todos]="unDone" (rowClick)="handleRowClick($event)" ></app-table>
 </section>
 
 <aside>
@@ -29,7 +30,7 @@
   </div>
     <div class="dialog-footer">
       <ui5-button design="Transparent" (click)="closeDialog()">Cancel</ui5-button>
-      <ui5-button design="Emphasized" (click)="saveDialog()">Save</ui5-button>
+      <ui5-button design="Emphasized" disabled="true" iconEnd="true" icon="away" (click)="saveDialog()"></ui5-button>
 	</div>
   </ui5-dialog>
 </aside>
